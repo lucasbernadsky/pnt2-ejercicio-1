@@ -12,7 +12,8 @@
 </head>
 
 <div id="app">
-    <input type="text" class="form-control" v-model="criterioDeBusqueda" placeholder="Ingresar un criterio de busqueda...">
+    <input type="text" class="form-control" v-model="criterioDeBusqueda"
+        placeholder="Ingresar un criterio de busqueda...">
     <br>
     <div class="card-deck">
         <div class="card" v-for="persona in personasFiltradas">
@@ -38,10 +39,17 @@
                 [
                     { nombre: 'Gaspar', apellido: 'De Carlo', dni: 29502368, correo: 'gdecar@ort.edu.ar' },
                     { nombre: 'Sofía', apellido: 'Ferragut', dni: 31227445, correo: 'sferragut@ort.edu.ar' },
-					{ nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
+                    { nombre: 'Lucas', apellido: 'Zanetti', dni: '-', correo: 'zanettilucas93@gmail.com' },
+                    { nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
                     { nombre: 'Gonzalo', apellido: 'Merlo', dni: 36949535, correo: 'merlogm@yahoo.com' },
+                    { nombre: 'Sebastian', apellido: 'Cerda', dni: 34975608, correo: 'sebycerda@hotmail.com' },
+                    { nombre: 'Ezequiel Daniel', apellido: 'Di Trana', dni: 33810453, correo: 'saint.eze@gmail.com' },
+                    { nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
+                    { nombre: 'Gonzalo', apellido: 'Merlo', dni: 36949535, correo: 'merlogm@yahoo.com' },
+                    { nombre: 'Eugenio', apellido: 'Sainte Marie', dni: 38707149, correo: 'eugenio.saintemarie@gmail.com' },
+                    { nombre: 'Lucas', apellido: 'Bernadsky', dni: 40935913, correo: 'lucas.bernadsky@gmail.com' },
                     { nombre: 'Martin', apellido: 'Kraitman', dni: 39871438, correo: 'mkraitman@gmail.com' }
-                ]
+
                 ]
         },
         computed: {
