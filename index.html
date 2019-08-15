@@ -11,20 +11,31 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.6.10/vue.min.js"></script>
 </head>
 
-<div id="app">
-    <input type="text" class="form-control" v-model="criterioDeBusqueda"
-        placeholder="Ingresar un criterio de busqueda...">
-    <br>
-    <div class="card-deck">
-        <div class="card" v-for="persona in personasFiltradas">
-            <div class="card-body">
-                <h5 class="card-title">{{getNombreCompleto(persona)}}</h5>
-                <p class="card-text">dni {{persona.dni}}</p>
-                <a href="#" class="card-link">{{persona.correo}}</a>
+<div class="container">
+    <div id="app">
+        <input type="text" class="form-control" v-model="criterioDeBusqueda"
+            placeholder="Ingresar un criterio de busqueda...">
+        <br>
+
+        <div class="card-deck">
+            <div class="row">
+                <div class="col">
+                    <div class="card" v-for="persona in personasFiltradas">
+                        <div class="col-md-4">
+                            <div class="card-body">
+                                <h5 class="card-title">{{getNombreCompleto(persona)}}</h5>
+                                <p class="card-text">dni {{persona.dni}}</p>
+                                <a href="#" class="card-link">{{persona.correo}}</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
 
+</div>
 </div>
 
 </html>
@@ -44,8 +55,8 @@
                     { nombre: 'Sebastian', apellido: 'Cerda', dni: 34975608, correo: 'sebycerda@hotmail.com' },
                     { nombre: 'Ezequiel Daniel', apellido: 'Di Trana', dni: 33810453, correo: 'saint.eze@gmail.com' },
                     { nombre: 'Eugenio', apellido: 'Sainte Marie', dni: 38707149, correo: 'eugenio.saintemarie@gmail.com' },
-                    { nombre: 'Federico', apellido: 'Loupias', dni: 38789094, correo: 'federicoloupias@gmail.com' }
-					{ nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
+                    { nombre: 'Federico', apellido: 'Loupias', dni: 38789094, correo: 'federicoloupias@gmail.com' },
+                    { nombre: 'Marina', apellido: 'Burkhardt', dni: 40136506, correo: 'burkhardtmarina@gmail.com' },
                     { nombre: 'Gonzalo', apellido: 'Merlo', dni: 36949535, correo: 'merlogm@yahoo.com' },
                     { nombre: 'Sebastian', apellido: 'Cerda', dni: 34975608, correo: 'sebycerda@hotmail.com' },
                     { nombre: 'Ezequiel Daniel', apellido: 'Di Trana', dni: 33810453, correo: 'saint.eze@gmail.com' },
@@ -70,9 +81,9 @@
                     { nombre: 'Federico', apellido: 'Amico', dni: 41399238, correo: 'fede.amico98@gmail.com' },
                     { nombre: 'Martin', apellido: 'Kraitman', dni: 39871438, correo: 'mkraitman@gmail.com' },
                     { nombre: 'Ramiro', apellido: 'Palomeque', dni: 41915790, correo: 'ramipalomeque@hotmail.com' },
-                    { nombre: 'Joaquín', apellido: 'Caballero', dni: 39208527, correo: 'joaquinmcaballero@gmail.com'},
-                    { nombre: 'Tomás', apellido: 'Florimo', dni: 39800566, correo: 'tomas.florimo@pestelli.com.ar'}
-                    
+                    { nombre: 'Joaquín', apellido: 'Caballero', dni: 39208527, correo: 'joaquinmcaballero@gmail.com' },
+                    { nombre: 'Tomás', apellido: 'Florimo', dni: 39800566, correo: 'tomas.florimo@pestelli.com.ar' }
+
                 ]
         },
         computed: {
