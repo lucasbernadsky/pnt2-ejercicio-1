@@ -16,12 +16,13 @@
         <input type="text" class="form-control" v-model="criterioDeBusqueda"
             placeholder="Ingresar un criterio de busqueda...">
         <br>
-
+        <h2 v-text="`${personasFiltradas.length} resultados`">   </h2> 
+        <h5 v-text="`${documentosDistintos.length} dni distintos`">   </h5> 
         <div class="card-deck">
             <div class="row">
-                <div class="col">
-                    <div class="card" v-for="persona in personasFiltradas">
-                        <div class="col-md-4">
+                <div class="col"  v-for="persona in personasFiltradas">
+                    <div class="card mb-3">
+                        <div>
                             <div class="card-body">
                                 <h5 class="card-title">{{getNombreCompleto(persona)}}</h5>
                                 <p class="card-text">dni {{persona.dni}}</p>
@@ -85,7 +86,6 @@
                     { nombre: 'Ramiro', apellido: 'Palomeque', dni: 41915790, correo: 'ramipalomeque@hotmail.com' },
                     { nombre: 'Joaquín', apellido: 'Caballero', dni: 39208527, correo: 'joaquinmcaballero@gmail.com' },
                     { nombre: 'Tomás', apellido: 'Florimo', dni: 39800566, correo: 'tomas.florimo@pestelli.com.ar' },
-
                     { nombre: 'Joaquín', apellido: 'Caballero', dni: 39208527, correo: 'joaquinmcaballero@gmail.com' },
                     { nombre: 'Tomás', apellido: 'Florimo', dni: 39800566, correo: 'tomas.florimo@pestelli.com.ar' },
                     { nombre: 'Andres', apellido: 'Taso', dni: 33707409, correo: 'ydres6@gmail.com.ar' },
@@ -96,15 +96,19 @@
         computed: {
             personasFiltradas() {
                 return this.personas.filter((persona) => {
-                    let registroCompleto = `${persona.nombre}${persona.apellido}${persona.dni}${persona.correo}`
-                    return registroCompleto.toLowerCase().includes(this.criterioDeBusqueda.toLowerCase())
+                    let registroConcatenado = `${persona.nombre}${persona.apellido}${persona.dni}${persona.correo}`
+                    return registroConcatenado.toLowerCase().includes(this.criterioDeBusqueda.toLowerCase())
                 });
+            },
+            documentosDistintos(){
+                return Array.from(new Set(this.personas.map(p=>p.dni)))
             }
         },
         methods: {
             getNombreCompleto(persona) {
                 return `${persona.nombre} ${persona.apellido}`
             }
+            
         }
     });
 </script>
