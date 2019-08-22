@@ -13,14 +13,21 @@
 
 <div class="container">
     <div id="app">
+        <br />
         <input type="text" class="form-control" v-model="criterioDeBusqueda"
-            placeholder="Ingresar un criterio de busqueda...">
-        <br>
-        <h2 v-text="`${personasFiltradas.length} resultados`">   </h2> 
-        <h5 v-text="`${documentosDistintos.length} dni distintos`">   </h5> 
+            placeholder="Ingresar un criterio de busqueda por nombre y apellido..." />
+
+        <br />
+
+        <input type="text" class="form-control" v-model="criterioDeBusquedaDNI"
+            placeholder="Ingresar un criterio de busqueda por DNI..." />
+
+
+        <h2 v-text="`${personasFiltradas.length} resultados`"></h2>
+        <h5 v-text="`${documentosDistintos.length} dni distintos`"> </h5>
         <div class="card-deck">
             <div class="row">
-                <div class="col"  v-for="persona in personasFiltradas">
+                <div class="col" v-for="persona in personasFiltradas">
                     <div class="card mb-3">
                         <div>
                             <div class="card-body">
@@ -46,6 +53,7 @@
         el: '#app',
         data: {
             criterioDeBusqueda: '',
+            criterioDeBusquedaDNI: '',
             //Aquí, en este array es donde tienen que agregar su información
             personas:
                 [
@@ -96,19 +104,21 @@
         computed: {
             personasFiltradas() {
                 return this.personas.filter((persona) => {
-                    let registroConcatenado = `${persona.nombre}${persona.apellido}${persona.dni}${persona.correo}`
-                    return registroConcatenado.toLowerCase().includes(this.criterioDeBusqueda.toLowerCase())
+                    let registroConcatenado = `${persona.nombre}${persona.apellido}`
+                    let registroDni = `${persona.dni}`
+                    return registroConcatenado.toLowerCase().includes(this.criterioDeBusqueda.toLowerCase()) && registroDni.toLowerCase().includes(this.criterioDeBusquedaDNI.toLowerCase())
                 });
             },
-            documentosDistintos(){
-                return Array.from(new Set(this.personas.map(p=>p.dni)))
+            documentosDistintos() {
+                return Array.from(new Set(this.personas.map(p => p.dni)))
             }
         },
         methods: {
             getNombreCompleto(persona) {
                 return `${persona.nombre} ${persona.apellido}`
             }
-            
+
+
         }
     });
 </script>
